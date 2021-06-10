@@ -24,6 +24,7 @@ RUN set -ex; \
                  xz-utils \
 	         lintian \
 		 megatools \
+		 vim \
 	    
 	    
         bash \
