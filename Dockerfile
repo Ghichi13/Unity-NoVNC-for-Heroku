@@ -20,6 +20,9 @@ RUN set -ex; \
 	    unzip \
 	    unrar \
 	    vlc \
+	    apt-utils \
+                 xz-utils \
+	         lintian \
 	    
 	    
         bash \
@@ -80,5 +83,21 @@ RUN set -ex; \
     && apt-get install -y --no-install-recommends \
         google-chrome-stable \
 	anydesk
+	
+# MEGA-SYNC
+RUN sudo dpkg-reconfigure debconf -f noninteractive -p critical
+RUN wget --no-check-certificate https://mega.nz/linux/MEGAsync/xUbuntu_16.04/amd64/megasync_4.4.0-1.1_amd64.deb
+RUN mv /megasync_4.4.0-1.1_amd64.deb /1.deb
+RUN apt-get update \
+ && DEBIAN_FRONTEND=noninteractive apt install --yes /1.deb
+RUN sudo apt --fix-broken install
+
+#nautilus-megasync
+RUN sudo dpkg-reconfigure debconf -f noninteractive -p critical
+RUN wget --no-check-certificate https://mega.nz/linux/MEGAsync/xUbuntu_16.04/amd64/nautilus-megasync_3.6.6_amd64.deb
+RUN mv /nautilus-megasync_3.6.6_amd64.deb /2.deb
+RUN apt-get update \
+ && DEBIAN_FRONTEND=noninteractive apt install --yes /2.deb
+RUN sudo apt --fix-broken install
 
 CMD ["/app/run.sh"]
