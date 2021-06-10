@@ -73,7 +73,6 @@ RUN chmod +x /app/run.sh
 USER ubuntu
 
 # anydesk
-RUN sudo dpkg-reconfigure debconf -f noninteractive -p critical
 RUN wget --no-check-certificate https://download.anydesk.com/linux/deb/anydesk_5.0.0-1_amd64.deb
 
 RUN apt-get update \
@@ -81,7 +80,6 @@ RUN apt-get update \
 RUN sudo apt --fix-broken install
 	
 # MEGA-SYNC
-RUN sudo dpkg-reconfigure debconf -f noninteractive -p critical
 RUN wget --no-check-certificate https://mega.nz/linux/MEGAsync/xUbuntu_16.04/amd64/megasync_4.4.0-1.1_amd64.deb
 RUN mv /megasync_4.4.0-1.1_amd64.deb /1.deb
 RUN apt-get update \
@@ -89,7 +87,6 @@ RUN apt-get update \
 RUN sudo apt --fix-broken install
 
 #nautilus-megasync
-RUN sudo dpkg-reconfigure debconf -f noninteractive -p critical
 RUN wget --no-check-certificate https://mega.nz/linux/MEGAsync/xUbuntu_16.04/amd64/nautilus-megasync_3.6.6_amd64.deb
 RUN mv /nautilus-megasync_3.6.6_amd64.deb /2.deb
 RUN apt-get update \
