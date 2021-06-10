@@ -72,17 +72,13 @@ RUN chmod +x /app/conf.d/websockify.sh
 RUN chmod +x /app/run.sh
 USER ubuntu
 
-RUN echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' >> /etc/apt/sources.list
-RUN echo "deb http://deb.anydesk.com/ all main"  >> /etc/apt/sources.list
-RUN wget --no-check-certificate https://dl.google.com/linux/linux_signing_key.pub -P /app
-RUN wget --no-check-certificate -qO - https://keys.anydesk.com/repos/DEB-GPG-KEY -O /app/anydesk.key
-RUN apt-key add /app/anydesk.key
-RUN apt-key add /app/linux_signing_key.pub
-RUN set -ex; \
-    apt-get update \
-    && apt-get install -y --no-install-recommends \
-        google-chrome-stable \
-	anydesk
+# anydesk
+RUN sudo dpkg-reconfigure debconf -f noninteractive -p critical
+RUN wget --no-check-certificate https://download.anydesk.com/linux/deb/anydesk_5.0.0-1_amd64.deb
+
+RUN apt-get update \
+ && DEBIAN_FRONTEND=noninteractive apt install --yes /anydesk_5.0.0-1_amd64.deb
+RUN sudo apt --fix-broken install
 	
 # MEGA-SYNC
 RUN sudo dpkg-reconfigure debconf -f noninteractive -p critical
