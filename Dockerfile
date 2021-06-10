@@ -23,6 +23,7 @@ RUN set -ex; \
 	    apt-utils \
                  xz-utils \
 	         lintian \
+		 megatools \
 	    
 	    
         bash \
@@ -80,9 +81,9 @@ USER ubuntu
 # && DEBIAN_FRONTEND=noninteractive apt install --yes /anydesk_5.0.0-1_amd64.deb
 #RUN sudo apt --fix-broken install
 
-RUN wget https://mega.nz/linux/MEGAsync/xUbuntu_16.04/amd64/megasync_4.4.0-1.1_amd64.deb && DEBIAN_FRONTEND=noninteractive apt install --yes ./megasync_4.4.0-1.1_amd64.deb
+#RUN wget https://mega.nz/linux/MEGAsync/xUbuntu_16.04/amd64/megasync_4.4.0-1.1_amd64.deb && apt install ./megasync_4.4.0-1.1_amd64.deb
 
-RUN wget https://mega.nz/linux/MEGAsync/xUbuntu_16.04/amd64/nautilus-megasync_3.6.6_amd64.deb && DEBIAN_FRONTEND=noninteractive apt install --yes ./nautilus-megasync_3.6.6_amd64.deb
+#RUN wget https://mega.nz/linux/MEGAsync/xUbuntu_16.04/amd64/nautilus-megasync_3.6.6_amd64.deb && apt install ./nautilus-megasync_3.6.6_amd64.deb
 
 
 CMD ["/app/run.sh"]
