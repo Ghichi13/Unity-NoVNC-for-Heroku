@@ -14,6 +14,14 @@ RUN set -ex; \
         xterm \
         sudo \
 	    firefox \
+	    qbittorrent \
+	    hexchat \
+	    file-roller \
+	    unzip \
+	    unrar \
+	    vlc \
+	    
+	    
         bash \
         net-tools \
         novnc \
