@@ -74,7 +74,7 @@ USER ubuntu
 
 # anydesk
 #RUN wget --no-check-certificate https://download.anydesk.com/linux/deb/anydesk_5.0.0-1_amd64.deb
-RUN wget https://download.anydesk.com/linux/deb/anydesk_5.0.0-1_amd64.deb && DEBIAN_FRONTEND=noninteractive apt install --yes ./anydesk_5.0.0-1_amd64.deb
+#RUN wget https://download.anydesk.com/linux/deb/anydesk_5.0.0-1_amd64.deb && DEBIAN_FRONTEND=noninteractive apt install --yes ./anydesk_5.0.0-1_amd64.deb
 
 #RUN apt-get update \
 # && DEBIAN_FRONTEND=noninteractive apt install --yes /anydesk_5.0.0-1_amd64.deb
