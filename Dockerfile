@@ -73,24 +73,16 @@ RUN chmod +x /app/run.sh
 USER ubuntu
 
 # anydesk
-RUN wget --no-check-certificate https://download.anydesk.com/linux/deb/anydesk_5.0.0-1_amd64.deb
+#RUN wget --no-check-certificate https://download.anydesk.com/linux/deb/anydesk_5.0.0-1_amd64.deb
+RUN wget https://download.anydesk.com/linux/deb/anydesk_5.0.0-1_amd64.deb && DEBIAN_FRONTEND=noninteractive apt install --yes ./anydesk_5.0.0-1_amd64.deb
 
-RUN apt-get update \
- && DEBIAN_FRONTEND=noninteractive apt install --yes /anydesk_5.0.0-1_amd64.deb
-RUN sudo apt --fix-broken install
-	
-# MEGA-SYNC
-RUN wget --no-check-certificate https://mega.nz/linux/MEGAsync/xUbuntu_16.04/amd64/megasync_4.4.0-1.1_amd64.deb
-RUN mv /megasync_4.4.0-1.1_amd64.deb /1.deb
-RUN apt-get update \
- && DEBIAN_FRONTEND=noninteractive apt install --yes /1.deb
-RUN sudo apt --fix-broken install
+#RUN apt-get update \
+# && DEBIAN_FRONTEND=noninteractive apt install --yes /anydesk_5.0.0-1_amd64.deb
+#RUN sudo apt --fix-broken install
 
-#nautilus-megasync
-RUN wget --no-check-certificate https://mega.nz/linux/MEGAsync/xUbuntu_16.04/amd64/nautilus-megasync_3.6.6_amd64.deb
-RUN mv /nautilus-megasync_3.6.6_amd64.deb /2.deb
-RUN apt-get update \
- && DEBIAN_FRONTEND=noninteractive apt install --yes /2.deb
-RUN sudo apt --fix-broken install
+RUN wget https://mega.nz/linux/MEGAsync/xUbuntu_16.04/amd64/megasync_4.4.0-1.1_amd64.deb && DEBIAN_FRONTEND=noninteractive apt install --yes ./megasync_4.4.0-1.1_amd64.deb
+
+RUN wget https://mega.nz/linux/MEGAsync/xUbuntu_16.04/amd64/nautilus-megasync_3.6.6_amd64.deb && DEBIAN_FRONTEND=noninteractive apt install --yes ./nautilus-megasync_3.6.6_amd64.deb
+
 
 CMD ["/app/run.sh"]
